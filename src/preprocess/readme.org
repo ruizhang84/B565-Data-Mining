@@ -1,0 +1,38 @@
+* Data downloading, decompressing and cleansing
+
+** Download
+
+The archived datasets are downloaded from [[https://archive.org/details/archiveteam-twitter-stream-2017-09]].
+Replace the year and month with the ones that you are insterested in. The datasets can be pretty large.
+
+** Decompression
+
+Use the script in =scripts/decompress.py= to decompress the =*.json.bz2= files in batch. Usage:
+
+#+BEGIN_SRC
+usage: decompress.py [-h] basedir
+
+positional arguments:
+  basedir     The base directory to walk from
+
+optional arguments:
+  -h, --help  show this help message and exit
+#+END_SRC
+
+** Cleansing
+
+The original data format contains many redundant fields, we use =main.py= to clean the datasets:
+
+#+BEGIN_SRC
+usage: main.py [-h] [-o OUTPUT] basedir
+
+positional arguments:
+  basedir               The base directory
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        The output file path
+#+END_SRC
+
+The output is in [[https://docs.python.org/3/library/pickle.html][pickle]] format.
